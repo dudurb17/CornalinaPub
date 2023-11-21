@@ -28,10 +28,7 @@
                     <td>{{ $empresa->nome }}</td>
                     <td>{{ $empresa->cnpj }}</td>
                     <td>{{ $empresa->endereco }}</td>
-                    <td>
-                        <!-- Adicione aqui links/buttons para editar e excluir se necessário -->
-                        <a href="{{ route('empresas.show', $empresas->id) }}" class="btn btn-info">Detalhes</a>
-                    </td>
+
                 </tr>
             @endforeach
         </tbody>

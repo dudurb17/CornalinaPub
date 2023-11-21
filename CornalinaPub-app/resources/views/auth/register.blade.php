@@ -8,6 +8,12 @@
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
+        {{-- Level do usuario --}}
+        <div>
+            <x-input-label for="level" :value="__('level')" />
+            <x-text-input id="level" class="block mt-1 w-full" type="text" name="level" :value="old('level')" required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('level')" class="mt-2" />
+        </div>
 
         <!-- Email Address -->
         <div class="mt-4">
