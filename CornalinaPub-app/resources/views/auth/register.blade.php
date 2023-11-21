@@ -9,10 +9,17 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
         {{-- Level do usuario --}}
-        <div>
+        {{-- <div>
             <x-input-label for="level" :value="__('level')" />
             <x-text-input id="level" class="block mt-1 w-full" type="text" name="level" :value="old('level')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('level')" class="mt-2" />
+        </div> --}}
+        <div>
+            <x-input-label for="Level" :value="__('Level')" />
+        <select name="level" class="g-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option value="empresa">Empresa</option>
+        <option value="usuario">Usuario</option>
+    </select>
         </div>
 
         <!-- Email Address -->
