@@ -3,14 +3,14 @@
         <div class="col-md-4">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Trabalhe
+                    <a style="color:white;" class="nav-link active" aria-current="page" href="#">Trabalhe
                         Conosco</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contato</a>
+                    <a style="color:white;" class="nav-link" href="#">Contato</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sobre
+                    <a style="color:white;" class="nav-link" href="#">Sobre
                         nós</a>
                 </li>
             </ul>
