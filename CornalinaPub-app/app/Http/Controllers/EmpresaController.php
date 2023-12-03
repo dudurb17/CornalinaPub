@@ -57,8 +57,10 @@ class EmpresaController extends Controller
 
     public function edit($id)
     {
-        $empresa = Empresa::findOrFail($id);
-        return view('empresas.edit', ['empresa' => $empresa]);
+        $empresas = Empresa::find($id); //select * from aluno where id = $id
+        return view('empresas.create')->with([
+            'empresas'=>$empresas]);
+
     }
 
     public function update(Request $request, $id)

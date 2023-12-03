@@ -35,8 +35,8 @@
                     <td>{{ $empresa->nome }}</td>
                     <td>{{ $empresa->cnpj }}</td>
                     <td>{{ $empresa->endereco }}</td>
-                    <td class="py-2 px-4 border"><a class="bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                        href="{{ route('produto.edit', $item->id) }}">Editar</a></td>
+                    <td class="py-2 px-4 border"><a
+                        href="{{ route('empresas.edit', $empresa->id) }}">Editar</a></td>
 
                 </tr>
             @endforeach
@@ -55,8 +55,16 @@
                 </button>
             </div>
             <div class="modal-body">
+                @php
+                // dd($produto); // é igual ao var_dump()
+                if (!empty($empresas->id)) {
+                    $route = route('empresas.update', $empresas->id);
+                } else {
+                    $route = route('empresas.store');
+                }
+            @endphp
                 <!-- Adicione aqui o formulário de cadastro -->
-                <form action="{{ route('empresas.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ $route }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="nome">Nome:</label>
