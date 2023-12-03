@@ -31,8 +31,25 @@ class EmpresaController extends Controller
             'cnpj' => 'required|unique:empresas',
             'endereco' => 'required',
         ]);
+        $dados=['nome'=>$request->nome,
+        'cnpj'=>$request->cnpj,
+        'endereco'=>$request->endereco];
 
-        Empresa::create($request->all());
+
+        $imagem = $request->file('logo');
+    //verifica se existe imagem no formulário
+            if($imagem){
+        $nome_arquivo =
+             date('YmdHis').'.'.$imagem->getClientOriginalExtension();
+
+    $diretorio = "img/events/";
+    //salva imagem em uma pasta do sistema
+    $imagem->storeAs($diretorio,$nome_arquivo,'public');
+
+    $dados['logo'] = $diretorio.$nome_arquivo;
+}
+
+        Empresa::create($dados);
 
         return redirect()->route('empresas.index')
             ->with('success', 'Empresa criada com sucesso!');

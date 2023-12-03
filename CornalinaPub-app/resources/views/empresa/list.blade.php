@@ -15,6 +15,7 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Logo</th>
                 <th>Nome</th>
                 <th>CNPJ</th>
                 <th>Endereço</th>
@@ -23,11 +24,19 @@
         </thead>
         <tbody>
             @foreach ($empresas as $empresa)
+            @php
+            $nome_imagem = !empty($empresa->logo) ? $empresa->logo : 'img/events/sem_imagem.png';
+
+            @endphp
                 <tr>
                     <td>{{ $empresa->id }}</td>
+                    <td class="py-2 "><img src="/storage/{{$nome_imagem}}" width="100px"
+                        alt="logo"></td>
                     <td>{{ $empresa->nome }}</td>
                     <td>{{ $empresa->cnpj }}</td>
                     <td>{{ $empresa->endereco }}</td>
+                    <td class="py-2 px-4 border"><a class="bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        href="{{ route('produto.edit', $item->id) }}">Editar</a></td>
 
                 </tr>
             @endforeach
@@ -47,7 +56,7 @@
             </div>
             <div class="modal-body">
                 <!-- Adicione aqui o formulário de cadastro -->
-                <form action="{{ route('empresas.store') }}" method="post">
+                <form action="{{ route('empresas.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="nome">Nome:</label>
@@ -61,6 +70,22 @@
                         <label for="endereco">Endereço:</label>
                         <input type="text" name="endereco" class="form-control" required>
                     </div>
+                    @php
+                    $nome_imagem = !empty($produto->logo) ? $produto->logo : 'img/events/sem_imagem.png';
+        @endphp
+        <div>
+            <img class="h-40 w-40 object-cover rounded-full" src="/storage/{{ $nome_imagem }}" width="300px"
+                alt="logo">
+            <br>
+                <input
+                class="block w-full text-sm text-slate-500
+                        file:mr-4 file:py-2 file:px-4
+                        file:rounded-full file:border-0
+                        file:text-sm file:font-semibold
+                        file:bg-green-50 file:text-green-700
+                        hover:file:bg-green-100"
+                type="file" name="logo" id="logo"><br>
+            </div>
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                 </form>
             </div>
