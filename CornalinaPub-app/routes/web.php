@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\EventoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,10 @@ Route::middleware('auth')->group(function () {
 
     // Rota de pesquisa
     Route::post('/empresas/search', [EmpresaController::class, 'search'])->name('empresas.search');
+    //Rota eventos
+    Route::get('/eventos', [EventoController::class, 'index'])->name('evento.index');
+    Route::get('/eventos/edit/{id}', [EventoController::class, 'edit'])->name('evento.edit');
+    Route::post('/eventos', [EventoController::class, 'store'])->name('evento.store');
 
 });
 

@@ -12,8 +12,11 @@
 
                     <a style="color:white;" href="{{ route('empresas.index') }}" class="nav-link">Empresas</a>
                 </li>
-            </ul>
+                <li class="nav-item">
 
+                    <a style="color:white;" href="{{ route('evento.index') }}" class="nav-link">Eventos</a>
+                </li>
+            </ul>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                @if(Auth::user() )

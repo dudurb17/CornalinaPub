@@ -57,7 +57,7 @@ class EmpresaController extends Controller
 
     public function edit($id)
     {
-        $empresas = Empresa::find($id); //select * from aluno where id = $id
+        $empresas = Empresa::find($id); //select * from empresa where id = $id
         return view('empresas.create')->with([
             'empresas'=>$empresas]);
 
