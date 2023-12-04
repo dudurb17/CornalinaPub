@@ -31,16 +31,14 @@ Route::middleware('auth')->group(function () {
 
 
     // Rotas para EmpresaController
-    Route::get('/empresas', [EmpresaController::class, 'index'])->name('empresas.index');
-    Route::get('/empresas/{id}', [EmpresaController::class, 'show'])->name('empresas.show');
 
-    Route::get('/empresas/create', [EmpresaController::class, 'create'])->name('empresas.create');
-    Route::post('/empresas', [EmpresaController::class, 'store'])->name('empresas.store');
+    Route::get('/empresas', [EmpresaController::class, 'index']);
+    Route::get('/empresas/create', [EmpresaController::class, 'create']);
+    Route::post('/empresas/store', [EmpresaController::class, 'store']);
+    Route::get('/empresas/edit/{id}', [EmpresaController::class, 'edit']);
+    Route::put('/empresas/update/{id}', [EmpresaController::class, 'update']);
+    Route::delete('/empresas/delete/{id}', [EmpresaController::class, 'destroy']);
 
-    Route::get('/empresas/edit/{id}', [EmpresaController::class, 'edit'])->name('empresas.edit');
-    Route::put('/empresas/{id}', [EmpresaController::class, 'update'])->name('empresas.update');
-
-    Route::delete('/empresas/{id}', [EmpresaController::class, 'destroy'])->name('empresas.destroy');
 
     // Rota de pesquisa
     Route::post('/empresas/search', [EmpresaController::class, 'search'])->name('empresas.search');

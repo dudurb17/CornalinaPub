@@ -62,12 +62,9 @@
                     @endforeach
                 </ul>
                 @endif
-                @php
-                $route = !empty($empresa->id) ? route('empresas.update', $empresa->id) : route('empresas.store');
-                @endphp
 
                 <!-- Adicione aqui o formulário de cadastro -->
-                <form action="{{ $route }}" method="post" enctype="multipart/form-data">
+                <form action="{{ empresa.store}}" method="post" enctype="multipart/form-data">
                     @csrf <!-- cria um hash de segurança-->
                     @if (!empty($empresa->id))
                     @method('PUT')
