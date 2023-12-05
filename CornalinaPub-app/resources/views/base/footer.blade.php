@@ -1,3 +1,8 @@
+<br><br>
+<br>
+<br>
+<br>
+
 <footer id="footer" class="footer fixed-bottom navbar-fixed-bot">
     <div class="row">
         <div class="col-md-4">
