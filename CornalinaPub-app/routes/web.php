@@ -32,10 +32,10 @@ Route::middleware('auth')->group(function () {
 
     // Rotas para EmpresaController
 
-    Route::get('/empresas', [EmpresaController::class, 'index']);
+    Route::get('/empresas', [EmpresaController::class, 'index'])->name('empresas.index');;
     Route::get('/empresas/create', [EmpresaController::class, 'create']);
-    Route::post('/empresas/store', [EmpresaController::class, 'store']);
-    Route::get('/empresas/edit/{id}', [EmpresaController::class, 'edit']);
+    Route::post('/empresas/store', [EmpresaController::class, 'store'])->name("empresas.store");
+    Route::get('/empresas/edit/{id}', [EmpresaController::class, 'edit'])->name('empresas.edit');
     Route::put('/empresas/update/{id}', [EmpresaController::class, 'update']);
     Route::delete('/empresas/delete/{id}', [EmpresaController::class, 'destroy']);
 

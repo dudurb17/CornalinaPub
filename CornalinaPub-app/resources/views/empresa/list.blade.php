@@ -64,7 +64,7 @@
                 @endif
 
                 <!-- Adicione aqui o formulário de cadastro -->
-                <form action="{{ empresa.store}}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('empresas.store')}}" method="post" enctype="multipart/form-data">
                     @csrf <!-- cria um hash de segurança-->
                     @if (!empty($empresa->id))
                     @method('PUT')
