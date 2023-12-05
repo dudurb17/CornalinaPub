@@ -23,34 +23,29 @@ class EventoController extends Controller
     {
         $request->validate([
             'nome' => 'required',
-            'empresas_id' => 'required|unique:empresas',
             'endereco' => 'required',
+            'numero_de_ingressos'=>"required",
 
         ]);
         $dados=['nome'=>$request->nome,
         'empresas_id'=>$request->empresas_id,
         'endereco'=>$request->endereco,
-    'data'=>$request->data,
-'numero_de_ingressos'=>$request->numero_de_ingressos];
+        'data'=>$request->data,
+        'numero_de_ingressos'=>$request->numero_de_ingressos];
+        $imagem = $request->file('baner');
+        //verifica se existe imagem no formulário
+        if($imagem){
+        $nome_arquivo = date('YmdHis').'.'.$imagem->getClientOriginalExtension();
 
+            $diretorio = "img/events/";
+        //salva imagem em uma pasta do sistema
+        $imagem->storeAs($diretorio,$nome_arquivo,'public');
 
-        $imagem = $request->file('logo');
-    //verifica se existe imagem no formulário
-            if($imagem){
-        $nome_arquivo =
-             date('YmdHis').'.'.$imagem->getClientOriginalExtension();
+        $dados['baner'] = $diretorio.$nome_arquivo;
+    }
 
-    $diretorio = "img/events/";
-    //salva imagem em uma pasta do sistema
-    $imagem->storeAs($diretorio,$nome_arquivo,'public');
-
-    $dados['logo'] = $diretorio.$nome_arquivo;
-}
-
-Evento::create($dados);
-
-        return redirect()->route('empresas.index')
-            ->with('success', 'Empresa criada com sucesso!');
+    Evento::create($dados);
+    return redirect()->route('evento.index')->with('success', 'Empresa criada com sucesso!');
     }
 
 }

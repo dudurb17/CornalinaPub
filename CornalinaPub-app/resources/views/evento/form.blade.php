@@ -14,86 +14,49 @@
     <div class="mx-auto py-12 divide-y md:max-w-4xl">
         <div class="grid grid-cols 2 gap-4">
             <h3 class="pt-4 text-2xl font-medium">Formulário de roupas</h3>
-            <form  method="post" enctype="multipart/form-data"
-                class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4">
-                @csrf
-                <!-- cria um hash de segurança -->
-                @if ($errors->any())
-                    <div class="mb-4 rounded-lg bg-danger-100 px-6 py-5 text-base text-danger-700" role="alert">Erro!
-                        @if ($errors->any())
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    </div>
-                @endif
-
-                {{-- @if (!empty($pedido->id))
-                    @method('PUT')
-                @endif --}}
-
-                <input type="hidden" name="id"
-                    value="@if (!empty($pedido->id)) {{ $pedido->id }}@elseif (!empty(old('id'))){{ old('id') }}@else{{ '' }} @endif">
-                <label class="block">
-                    <span class="text-gray-700">Nome da peça</span>
-                    <select name="produto_id"
-                        class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
-                    focus:ring-0 focus:border-black">
-                        @foreach ($empresa as $item)
-                            <option value="{{ $item->id }}">{{ $item->nome_peca }}</option>
-                        @endforeach
-                    </select>
-                </label>
-
-
-                <div class="mb-4 md:flex grid grid-rows-2">
-                    <div class="relative mb-6">
-                        <label class="block">
-                            <span class="text-gray-700">Data da entrega</span>
-                            <input type="date" name="data_pedido"
+           <!-- Adicione aqui o formulário de cadastro -->
+           <form action="{{ route('evento.store')}}" method="post" enctype="multipart/form-data">
+            @csrf <!-- cria um hash de segurança-->
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" value="@if (!empty($evento->nome)) {{ $evento->nome }}@elseif(!empty(old('nome'))){{ old('nome') }}@else{{ '' }} @endif" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="date" name="data"
                                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                     focus:ring-0 focus:border-black"
-                                value="@if (!empty($pedido->data_pedido)) {{ $pedido->data_pedido }} @elseif (!empty(old('data_pedido'))){{ old('data_pedido') }}@else{{ '' }} @endif"
+                                value="@if (!empty($evento->data)) {{ $evento->data }} @elseif (!empty(old('data'))){{ old('data') }}@else{{ '' }} @endif"
                                 required>
                         </label>
-                    </div>
-                    <div class="md-4 md:mr-2 md:mb-0 col-span-2">
-                        <label class="block">
-                            <span class="text-gray-700">CNPJ</span>
-                            <input type="text" name="cnpj"
-                                class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
-                        focus:ring-0 focus:border-black"
-                                required
-                                value=" @if (!empty($pedido->cnpj)) {{ $pedido->cnpj }}@elseif(!empty(old('cnpj'))){{ old('cnpj') }}@else{{ '' }} @endif"><br><br>
-                        </label>
-                    </div>
-                </div>
-                <label class="block">
-                    <span class="text-gray-700">Email</span>
-                    <input type="email" name="email"
-                        class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
-                focus:ring-0 focus:border-black"
-                        value="@if (!empty($pedido->email)) {{ $pedido->email }}@elseif(!empty(old('email'))) {{ old('email') }} @else{{ '' }} @endif"><br><br>
-                </label>
+            </div>
+            <div class="form-group">
+                <label for="empresas_id">Nome da empresa:</label>
+                <select name="empresas_id"
+                    class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
+                focus:ring-0 focus:border-black">
+                    @foreach ($empresa as $item)
+                        <option value="{{ $item->id }}">{{ $item->nome }}</option>
+                    @endforeach
+                </select>
+            </div>
 
-                <label class="block">
-                    <span class="text-gray-700">Quantidade</span>
-                    <input type="text" name="Quantidade"
-                        class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
-                    focus:ring-0 focus:border-black"
-                        value="@if (!empty(old('Quantidade'))) {{ old('Quantidade') }}@elseif(!empty($pedido->Quantidade)){{ $pedido->Quantidade }}@else{{ '' }} @endif"><br><br>
-                </label>
-        </div>
-        <br>
-        <br>
-        <button
-            class="rounded-full text-neutral-100 bg-green-700 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
-            type="submit">Salvar</button>
-
-        <button><a class="rounded-full text-neutral-100 bg-blue-700 px-4 py-2 w-40 font-bold hover:bg-blue-300"
-                href="{{ route('evento.index') }}">Voltar</a></button>
+            <div class="form-group">
+                <label for="numero_de_ingressos">CNPJ:</label>
+                <input type="text" name="numero_de_ingressos" value="@if (!empty($evento->numero_de_ingressos)) {{ $evento->numero_de_ingressos }}@elseif(!empty(old('numero_de_ingressos'))){{ old('numero_de_ingressos') }}@else{{ '' }} @endif" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="endereco">Endereço:</label>
+                <input type="text" name="endereco" value="@if (!empty($evento->endereco)) {{ $evento->endereco }}@elseif(!empty(old('endereco'))){{ old('endereco') }}@else{{ '' }} @endif" class="form-control" required>
+            </div>
+                @php
+                $nome_imagem = !empty($produto->baner) ? $produto->baner : 'img/events/sem_imagem.png';
+                @endphp
+            <div>
+                <img class="h-40 w-40 object-cover rounded-full" src="/storage/{{ $nome_imagem }}" width="300px" alt="logo">
+                <br>
+                <input class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100" type="file" name="baner" id="logo"><br>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>
     </div>
     </div>

@@ -46,7 +46,6 @@ Route::middleware('auth')->group(function () {
     //Rota eventos
     Route::get('/eventos', [EventoController::class, 'index'])->name('evento.index');
     Route::get('/eventos/create',[EventoController::class,'create'])->name('evento.create');
-
     Route::get('/eventos/edit/{id}', [EventoController::class, 'edit'])->name('evento.edit');
     Route::post('/eventos', [EventoController::class, 'store'])->name('evento.store');
 
