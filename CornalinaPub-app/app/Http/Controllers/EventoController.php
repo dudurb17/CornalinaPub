@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Evento;
+use App\Models\Empresa;
 class EventoController extends Controller
 {
     public function index()
@@ -11,6 +12,12 @@ class EventoController extends Controller
    {
         $eventos = Evento::all();
         return view('evento.list', ['evento' =>  $eventos]);
+    }
+
+    public function create(){
+        $eventos = Evento::all();
+        $empresa=Empresa::all();
+        return view('evento.form')->with(['evento' =>  $eventos, 'empresa'=>$empresa]);
     }
     public function store(Request $request)
     {

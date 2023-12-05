@@ -6,9 +6,8 @@
     <h2>Listagem de Eventos</h2>
 
     <!-- Botão para abrir o modal de cadastro -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastroModal">
-        Nova Empresa
-    </button>
+    <button type="button" class="btn btn-primary">
+        <a href="{{ route('evento.create') }}">Cadastrar</a></button>
 
     <!-- Tabela de Empresas -->
     <table class="table mt-3">
