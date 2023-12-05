@@ -1,4 +1,4 @@
-<footer id="footer" class="footer navbar-fixed-bottom">
+<footer id="footer" class="footer fixed-bottom navbar-fixed-bot">
     <div class="row">
         <div class="col-md-4">
             <ul class="nav">

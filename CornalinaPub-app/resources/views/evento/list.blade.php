@@ -15,10 +15,11 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Logo</th>
+                <th>Baner</th>
                 <th>Nome</th>
-                <th>CNPJ</th>
-                <th>Endereço</th>
+                <th>Empresa</th>
+                <th>Data</th>
+                <th>Numero de ingressos</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -33,8 +34,9 @@
                     <td class="py-2 "><img src="/storage/{{$nome_imagem}}" width="100px"
                         alt="logo"></td>
                     <td>{{ $item->nome }}</td>
-                    <td>{{ $item->cnpj }}</td>
-                    <td>{{ $item->endereco }}</td>
+                    <td>{{$item->empresas_id}}</td>
+                    <td>{{ $item->data }}</td>
+                    <td>{{ $item->numero_de_ingressos }}</td>
                     <td class="py-2 px-4 border"><a
                         href="{{ route('evento.edit', $item->id) }}">Editar</a></td>
 

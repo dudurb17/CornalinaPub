@@ -3,19 +3,18 @@
 @section('titulo', 'Formulário de Pedido')
 
 @section('content')
-    {{-- @php
-        // dd($pedido); // é igual ao var_dump()
-        if (!empty($pedido->id)) {
-            $route = route('pedido.update', $pedido->id);
+    @php
+        if (!empty($evento->id)) {
+            $route = route('evento.update', $evento->id);
         } else {
-            $route = route('pedido.cadastrar');
+            $route = route('evento.store');
         }
-    @endphp --}}
+    @endphp
     <div class="mx-auto py-12 divide-y md:max-w-4xl">
         <div class="grid grid-cols 2 gap-4">
-            <h3 class="pt-4 text-2xl font-medium">Formulário de roupas</h3>
+            <h3 class="pt-4 text-2xl font-medium">Formulário de Eventos</h3>
            <!-- Adicione aqui o formulário de cadastro -->
-           <form action="{{ route('evento.store')}}" method="post" enctype="multipart/form-data">
+           <form action="{{ $route}}" method="post" enctype="multipart/form-data">
             @csrf <!-- cria um hash de segurança-->
             <div class="form-group">
                 <label for="nome">Nome:</label>
@@ -55,8 +54,12 @@
                 <img class="h-40 w-40 object-cover rounded-full" src="/storage/{{ $nome_imagem }}" width="300px" alt="logo">
                 <br>
                 <input class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100" type="file" name="baner" id="logo"><br>
-            </div>
+            </div><br>
             <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <br>
+            <br>
+            <br>
+            <br>
         </form>
     </div>
     </div>

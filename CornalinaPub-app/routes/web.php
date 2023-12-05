@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/empresas/create', [EmpresaController::class, 'create']);
     Route::post('/empresas/store', [EmpresaController::class, 'store'])->name("empresas.store");
     Route::get('/empresas/edit/{id}', [EmpresaController::class, 'edit'])->name('empresas.edit');
-    Route::put('/empresas/update/{id}', [EmpresaController::class, 'update']);
+    Route::put('/empresas/update/{id}', [EmpresaController::class, 'update'])->name("empresas.update");
     Route::delete('/empresas/delete/{id}', [EmpresaController::class, 'destroy']);
 
 
@@ -48,6 +48,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/eventos/create',[EventoController::class,'create'])->name('evento.create');
     Route::get('/eventos/edit/{id}', [EventoController::class, 'edit'])->name('evento.edit');
     Route::post('/eventos', [EventoController::class, 'store'])->name('evento.store');
+    Route::post('/eventos/update/{id}',
+    [EventoController::class, 'update'])->name('evento.update');
+    Route::get('/evento/edit/{id}',
+    [EventoController::class, 'edit'])->name('evento.edit');
+
 
 });
 
