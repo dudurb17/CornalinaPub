@@ -10,4 +10,8 @@ class Empresa extends Model
     use HasFactory;
     protected $table="empresas";
     protected $fillable = ['nome', 'cnpj', 'endereco', "logo"];
+    public function eventos(){
+        //relacionamento 1 - n
+        return $this->hasMany(Evento::class);
+    }
 }

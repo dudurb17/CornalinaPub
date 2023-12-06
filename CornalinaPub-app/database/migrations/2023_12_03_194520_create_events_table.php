@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string("nome");
-            $table->foreignId('empresas_id')->constrained('empresas')->default(null)->onDelete('cascade');
+            $table->foreignId('empresa_id')->constrained('empresas')->default(null)->onDelete('cascade');
             $table->string("baner", 150,)->nullable();
             $table->date("data");
             $table->string("numero_de_ingressos");

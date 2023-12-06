@@ -9,5 +9,12 @@ class Evento extends Model
 {
     use HasFactory;
     protected $table="events";
-    protected $fillable = ['nome', 'empresas_id', 'baner', "data","numero_de_ingressos", "endereco"];
+    protected $fillable = ['nome', 'empresa_id', 'baner', "data","numero_de_ingressos", "endereco"];
+
+    public function empresa(){
+        return $this->belongsTo(Empresa::class,
+            'empresa_id','id');
+    }
+
+
 }

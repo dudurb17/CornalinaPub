@@ -18,16 +18,15 @@ class EmpresaController extends Controller
         $empresas = Empresa::findOrFail($id);
         return view('empresas.show', ['empresa' => $empresas]);
     }
-
-    public function create()
-    {
-        return view('empresas.create');
+    public function create(){
+        $empresa=Empresa::all();
+        return view('empresa.form')->with([
+             'empresa'=>$empresa]);
     }
-
     public function store(Request $request)
-    {
-        $request->validate([
-            'nome' => 'required',
+        {
+         $request->validate([
+                'nome' => 'required',
             'cnpj' => 'required|unique:empresas',
             'endereco' => 'required',
         ]);
@@ -57,10 +56,17 @@ class EmpresaController extends Controller
 
     public function edit($id)
     {
-        $empresas = Empresa::find($id); //select * from empresa where id = $id
-        return view('empresas.create')->with([
-            'empresas'=>$empresas]);
+        $empresa = Empresa::find($id); //select * from empresa where id = $id
+        return view('empresa.form')->with([
+            'empresa'=>$empresa]);
 
+    }
+
+    public function listEventos($id)
+    {
+
+        $empresa = Empresa::with('eventos')->find($id);
+        return view('eventoEmpresa.list')->with(['empresa'=>$empresa->eventos ]);
     }
 
     public function update(Request $request, $id)
@@ -88,7 +94,19 @@ class EmpresaController extends Controller
     }
 
     public function search(Request $request)
-    {
-        // Lógica de pesquisa aqui
-    }
+        {
+            if(!empty($request->valor)){
+                $empresas = Empresa::where(
+                    $request->tipo,
+                     'like' ,
+                    "%". $request->valor."%"
+                    )->get();
+            } else {
+                $empresas = Empresa::all();
+            }
+
+            return view('empresa.list', ['empresas' => $empresas]);
+        }
+
+
 }

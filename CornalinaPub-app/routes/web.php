@@ -33,15 +33,16 @@ Route::middleware('auth')->group(function () {
     // Rotas para EmpresaController
 
     Route::get('/empresas', [EmpresaController::class, 'index'])->name('empresas.index');;
-    Route::get('/empresas/create', [EmpresaController::class, 'create']);
+    Route::get('/empresas/create', [EmpresaController::class, 'create'])->name("empresas.create");
     Route::post('/empresas/store', [EmpresaController::class, 'store'])->name("empresas.store");
     Route::get('/empresas/edit/{id}', [EmpresaController::class, 'edit'])->name('empresas.edit');
     Route::put('/empresas/update/{id}', [EmpresaController::class, 'update'])->name("empresas.update");
-    Route::delete('/empresas/delete/{id}', [EmpresaController::class, 'destroy']);
+    Route::get('/empresas/delete/{id}', [EmpresaController::class, 'destroy'])->name("empresas.destroy");
+    Route::post('/empresas/search',
+    [EmpresaController::class, 'search'])->name('empresas.search');
+    Route::get('/empresaEvent/{id}',
+    [EmpresaController::class, 'listEventos'])->name('eventoEmpresa.list');
 
-
-    // Rota de pesquisa
-    Route::post('/empresas/search', [EmpresaController::class, 'search'])->name('empresas.search');
 
     //Rota eventos
     Route::get('/eventos', [EventoController::class, 'index'])->name('evento.index');
@@ -52,6 +53,11 @@ Route::middleware('auth')->group(function () {
     [EventoController::class, 'update'])->name('evento.update');
     Route::get('/evento/edit/{id}',
     [EventoController::class, 'edit'])->name('evento.edit');
+    Route::get('/evento/destroy/{id}',
+    [EventoController::class, 'destroy'])->name('evento.destroy');
+    Route::post('/evento/search',
+    [EventoController::class, 'search'])->name('evento.search');
+
 
 
 });

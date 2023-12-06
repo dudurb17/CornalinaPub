@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a style="color:white;" class="navbar-brand p-4" href="#">Cornalina Pub</a>
+        <a style="color:white;" class="navbar-brand p-4" href="{{ route('dashboard') }}">Cornalina Pub</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,13 +20,11 @@
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                @if(Auth::user() )
-               <a
-               class="text-gray-300 block px-4 py-2 text-sm"
-               href="route('logout')"
-                       onclick="event.preventDefault();
-                                   this.closest('form').submit();">
-                   {{ __('Log Out') }}
-               </a>
+               <a class="btn btn-danger text-white px-4 py-2 text-sm"
+       href="{{ route('logout') }}"
+       onclick="event.preventDefault(); this.closest('form').submit();">
+        {{ __('Log Out') }}
+    </a>
                @endif
 
 

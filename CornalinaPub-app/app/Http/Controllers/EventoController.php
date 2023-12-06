@@ -28,7 +28,7 @@ class EventoController extends Controller
 
         ]);
         $dados=['nome'=>$request->nome,
-        'empresas_id'=>$request->empresas_id,
+        'empresa_id'=>$request->empresa_id,
         'endereco'=>$request->endereco,
         'data'=>$request->data,
         'numero_de_ingressos'=>$request->numero_de_ingressos];
@@ -70,7 +70,7 @@ class EventoController extends Controller
         ]);
 
         $dados=['nome'=>$request->nome,
-        'empresas_id'=>$request->empresas_id,
+        'empresa_id'=>$request->empresa_id,
         'endereco'=>$request->endereco,
         'data'=>$request->data,
         'numero_de_ingressos'=>$request->numero_de_ingressos];
@@ -96,6 +96,30 @@ class EventoController extends Controller
 
             return redirect()->route('evento.index')->with('success', 'Empresa criada com sucesso!');
 
+    }
+    public function destroy($id)
+    {
+        $evento = Evento::findOrFail($id);
+
+        $evento->delete();
+
+        return redirect()->route('evento.index')->with('success', 'Evento removido com sucesso!');
+
+    }
+
+    public function search(Request $request)
+    {
+        if(!empty($request->valor)){
+            $eventos = Evento::where(
+                $request->tipo,
+                 'like' ,
+                "%". $request->valor."%"
+                )->get();
+        } else {
+            $eventos = Evento::all();
+        }
+
+        return view('evento.list', ['evento' =>  $eventos]);
     }
 
 
