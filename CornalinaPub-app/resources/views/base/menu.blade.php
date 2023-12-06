@@ -17,11 +17,12 @@
                     <a style="color:white;" href="{{ route('evento.index') }}" class="nav-link">Eventos</a>
                 </li>
                 <li class="nav-item">
+                    <a style="color:white;" href="{{ route('lote.index') }}" class="nav-link">Lote de ingressos</a>
+                    </li>
+                <li class="nav-item">
                 <a style="color:white;" href="{{ route('ingresso.index') }}" class="nav-link">Ingressos</a>
                 </li>
-                <li class="nav-item">
-                <a style="color:white;" href="{{ route('lote.index') }}" class="nav-link">Lote de ingressos</a>
-                </li>
+
             </ul>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

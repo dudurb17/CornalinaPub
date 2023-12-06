@@ -62,7 +62,7 @@ Route::get('/chart', [StatisticController::class, 'index'])->name('estatistic.in
     Route::post('/evento/search',
     [EventoController::class, 'search'])->name('evento.search');
  //relatorio
- Route::get('/evento/report/',
+ Route::get('/eventos/report/',
  [EventoController::class, 'report'])->name('evento.report');
 
 // Rotas para Ingresso
@@ -77,13 +77,6 @@ Route::post('/ingresso/search',
 
 // routes/web.php
 
-// Route::get('/lotes-ingresso', [LoteIngressoController::class, 'index'])->name('loteIngresso.index');
-// Route::get('/lotes-ingresso/create', [LoteIngressoController::class, 'create'])->name('loteIngresso.create');
-// Route::get('/lotes-ingresso', [LoteIngressoController::class, 'index'])->name('loteIngresso.index');
-// Route::get('/lotes-ingresso/edit/{id}', [LoteIngressoController::class, 'edit'])->name('loteIngresso.edit');
-// Route::post('/lotes-ingresso/update/{id}', [LoteIngressoController::class, 'update'])->name('loteIngresso.update');
-// Route::get('/lotes-ingresso/destroy/{id}', [LoteIngressoController::class, 'destroy'])->name('loteIngresso.destroy');
-// Route::get('/lotes-ingresso', [LoteIngressoController::class, 'search'])->name('loteIngresso.search');
 Route::get('/lote', [LoteIngressoController::class, 'index'])->name('lote.index');
 Route::post('/lotes', [LoteIngressoController::class, 'search'])->name('lote.search');
 Route::get('/lote/create', [LoteIngressoController::class, 'create'])->name('lote.create');

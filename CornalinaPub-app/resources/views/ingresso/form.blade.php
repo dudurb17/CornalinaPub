@@ -43,8 +43,8 @@
 
 
                         <div class="mb-3">
-                            <label for="lote_ingresso_id" class="form-label">Lote:</label>
-                            <select name="lote_ingresso_id" class="form-select">
+                            <label for="lote_id" class="form-label">Lote:</label>
+                            <select name="lote_id" class="form-select">
                                 @foreach ($lotesIngresso as $item)
                                     <option value="{{ $item->id }}">{{ $item->descricao}}</option>
                                 @endforeach

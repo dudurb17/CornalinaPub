@@ -24,13 +24,13 @@ class IngressoController extends Controller
     {
         // Lógica para validar e armazenar o ingresso no banco de dados
         $request->validate([
-            'lote_ingresso_id' => 'required',
+            'lote_id' => 'required',
             'codigo' => 'required',
             'valor' => 'required',
         ]);
 
         Ingresso::create([
-            'lote_ingresso_id' => $request->lote_ingresso_id,
+            'lote_id' => $request->lote_id,
             'codigo' => $request->codigo,
             'valor' => $request->valor,
         ]);

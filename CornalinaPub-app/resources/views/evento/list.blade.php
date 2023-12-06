@@ -20,11 +20,12 @@
             <button type="submit" class="btn btn-primary">Buscar</button>
         </div>
     </form>
+    <button type="button" class="btn btn-primary">Primary</button>
 
-    <!-- Botão para abrir o modal de cadastro -->
     <button type="button" class="btn btn-success">
         <a href="{{ route('evento.create') }}" class="text-white text-decoration-none">Cadastrar novo Evento</a>
     </button>
+
 </div>
 <br>
 

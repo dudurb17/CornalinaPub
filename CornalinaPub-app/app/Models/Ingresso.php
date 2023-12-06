@@ -9,10 +9,10 @@ class Ingresso extends Model
 {
     use HasFactory;
     protected $table="ingresso";
-    protected $fillable = ['lote_ingresso_id', 'codigo','valor'];
+    protected $fillable = ['lote_id', 'codigo','valor'];
 
     public function loteIngresso()
     {
-        return $this->belongsTo(LoteIngresso::class, 'lote_ingresso_id', 'id');
+        return $this->belongsTo(LoteIngresso::class, 'lote_id', 'id');
     }
 }
