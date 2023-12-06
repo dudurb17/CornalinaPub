@@ -42,14 +42,15 @@ class IngressoController extends Controller
     {
         // Lógica para obter dados do ingresso que será editado
         $ingresso = Ingresso::find($id);
-        return view('ingresso.form', ['ingresso' => $ingresso]);
+        $lote=LoteIngresso::all();
+        return view('ingresso.form', ['ingresso' => $ingresso, 'lotesIngresso'=>$lote ]);
     }
 
     public function update(Request $request, $id)
     {
         // Lógica para validar e atualizar o ingresso no banco de dados
         $request->validate([
-            'lote_ingresso_id' => 'required',
+            'lote_id' => 'required',
             'codigo' => 'required',
             'valor' => 'required',
         ]);
@@ -57,7 +58,7 @@ class IngressoController extends Controller
         $ingresso = Ingresso::find($id);
 
         $ingresso->update([
-            'lote_ingresso_id' => $request->lote_ingresso_id,
+            'lote_id' => $request->lote_id,
             'codigo' => $request->codigo,
             'valor' => $request->valor,
         ]);

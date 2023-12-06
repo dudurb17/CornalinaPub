@@ -4,25 +4,30 @@
 
 <div class="container mt-3">
 <div class="d-flex justify-content-between align-items-center">
-    <h2>Listagem de Eventos</h2>
+    <h3>Listagem de Eventos</h3>
     <form action="{{ route('evento.search') }}" method="post" class="d-flex">
         @csrf
-        <div class="input-group">
+        <div class="input-group" >
             <select name="tipo" class="form-select">
                 <option value="nome">Nome</option>
                 <option value="numero_de_ingressos"> Numero de ingressos</option>
             </select>
         </div>
-        <div class="input-group">
+        <div class="input-group" style="margin-left: 5px">
             <input type="text" name="valor" class="form-control" placeholder="Pesquisar">
         </div>
         <div class="input-group">
-            <button type="submit" class="btn btn-primary">Buscar</button>
+            <button type="submit" class="btn btn-primary" style="margin-left: 5px">Buscar</button>
         </div>
     </form>
-    <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-primary">
+    <i class="bi bi-filetype-pdf"></i>
+    <a href="{{ route('evento.report') }}" class="text-white text-decoration-none">Abrir PDF</a>
+    </button>
 
-    <button type="button" class="btn btn-success">
+
+
+    <button type="button" class="btn btn-success" style="margin-left: 5px">
         <a href="{{ route('evento.create') }}" class="text-white text-decoration-none">Cadastrar novo Evento</a>
     </button>
 
@@ -59,8 +64,10 @@
                     <td class="py-2 px-4 border">{{ $item->data }}</td>
                     <td class="py-2 px-4 border">{{ $item->numero_de_ingressos }}</td>
                     <td class="py-2 px-4 border">{{ $item->endereco }}</td>
-                    <td class="py-2 px-4 border"><a type="button" class="btn btn-primary"
-                        href="{{ route('evento.edit', $item->id) }}">Editar</a></td>
+                    <td class="py-2 px-4 border">
+                        <a type="button" class="btn btn-primary"
+                        href="{{ route('evento.edit', $item->id) }}">Editar</a>
+                    </td>
 <td class="py-2 px-4 border">
                     <a type="button" class="btn btn-danger" href="{{ route('evento.destroy', $item->id) }}"
                             onclick="return confirm('Deseja Excluir?')">Excluir</a></td>
