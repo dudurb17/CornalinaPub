@@ -4,13 +4,16 @@
 
 <div class="container mt-3">
 <div class="d-flex justify-content-between align-items-center">
-    <h3>Listagem de Eventos</h3>
+
+<h3>Listagem de Eventos</h3>
+
+
     <form action="{{ route('evento.search') }}" method="post" class="d-flex">
         @csrf
         <div class="input-group" >
             <select name="tipo" class="form-select">
                 <option value="nome">Nome</option>
-                <option value="numero_de_ingressos"> Numero de ingressos</option>
+                <option value="numero_de_ingressos"> Número de ingressos</option>
             </select>
         </div>
         <div class="input-group" style="margin-left: 5px">
@@ -20,6 +23,7 @@
             <button type="submit" class="btn btn-primary" style="margin-left: 5px">Buscar</button>
         </div>
     </form>
+
     <button type="button" class="btn btn-primary">
     <i class="bi bi-filetype-pdf"></i>
     <a href="{{ route('evento.report') }}" class="text-white text-decoration-none">Abrir PDF</a>
@@ -43,7 +47,7 @@
                 <th>Nome:</th>
                 <th>Empresa:</th>
                 <th>Data:</th>
-                <th>Numero de ingressos:</th>
+                <th>N° ingressos:</th>
                 <th>Endereço:</th>
                 <th>Ações:</th>
                 <th>Ações:</th>
