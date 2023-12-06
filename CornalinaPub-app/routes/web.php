@@ -4,7 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\EventoController;
-
+use App\Http\Controllers\StatisticController;
+use App\Http\Controllers\IngressoController;
+use App\Http\Controllers\LoteIngressoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+Route::get('/chart', [StatisticController::class, 'index'])->name('estatistic.index');
 
 
     // Rotas para EmpresaController
@@ -57,8 +61,36 @@ Route::middleware('auth')->group(function () {
     [EventoController::class, 'destroy'])->name('evento.destroy');
     Route::post('/evento/search',
     [EventoController::class, 'search'])->name('evento.search');
+ //relatorio
+ Route::get('/evento/report/',
+ [EventoController::class, 'report'])->name('evento.report');
 
+// Rotas para Ingresso
+Route::get('/ingresso', [IngressoController::class, 'index'])->name('ingresso.index');
+Route::get('/ingresso/create', [IngressoController::class, 'create'])->name('ingresso.create');
+Route::get('/ingresso/edit/{id}', [IngressoController::class, 'edit'])->name('ingresso.edit');
+Route::post('/ingresso', [IngressoController::class, 'store'])->name('ingresso.store');
+Route::post('/ingresso/update/{id}', [IngressoController::class, 'update'])->name('ingresso.update');
+Route::get('/ingresso/destroy/{id}', [IngressoController::class, 'destroy'])->name('ingresso.destroy');
+Route::post('/ingresso/search',
+[IngressoController::class, 'search'])->name('ingresso.search');
 
+// routes/web.php
+
+// Route::get('/lotes-ingresso', [LoteIngressoController::class, 'index'])->name('loteIngresso.index');
+// Route::get('/lotes-ingresso/create', [LoteIngressoController::class, 'create'])->name('loteIngresso.create');
+// Route::get('/lotes-ingresso', [LoteIngressoController::class, 'index'])->name('loteIngresso.index');
+// Route::get('/lotes-ingresso/edit/{id}', [LoteIngressoController::class, 'edit'])->name('loteIngresso.edit');
+// Route::post('/lotes-ingresso/update/{id}', [LoteIngressoController::class, 'update'])->name('loteIngresso.update');
+// Route::get('/lotes-ingresso/destroy/{id}', [LoteIngressoController::class, 'destroy'])->name('loteIngresso.destroy');
+// Route::get('/lotes-ingresso', [LoteIngressoController::class, 'search'])->name('loteIngresso.search');
+Route::get('/lote', [LoteIngressoController::class, 'index'])->name('lote.index');
+Route::post('/lotes', [LoteIngressoController::class, 'search'])->name('lote.search');
+Route::get('/lote/create', [LoteIngressoController::class, 'create'])->name('lote.create');
+Route::get('/lote/edit/{id}', [LoteIngressoController::class, 'edit'])->name('lote.edit');
+Route::get('/lote/destroy/{id}', [LoteIngressoController::class, 'destroy'])->name('lote.destroy');
+Route::post('/lote/update/{id}', [LoteIngressoController::class, 'update'])->name('lote.update');
+Route::post('/lote/store', [LoteIngressoController::class, 'store'])->name('lote.store');
 
 });
 

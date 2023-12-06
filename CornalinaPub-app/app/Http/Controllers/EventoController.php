@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Evento;
 use App\Models\Empresa;
+use PDF;
 class EventoController extends Controller
 {
     public function index()
@@ -49,7 +50,7 @@ class EventoController extends Controller
     }
     public function edit($id)
     {
-        $evento = Evento::find($id); //select * from aluno where id = $id
+        $evento = Evento::find($id); //select * from evento where id = $id
         $empresa=Empresa::all();
         return view('evento.form')->with([
             'evento'=> $evento, 'empresa'=>$empresa ]);
@@ -122,6 +123,20 @@ class EventoController extends Controller
         return view('evento.list', ['evento' =>  $eventos]);
     }
 
+    public function report(){
+        //select * from evento order by nome
+        $eventos = Evento::orderBy('nome')->get();
 
+        $data = [
+            'title'=>"Relatório listagem de eventos",
+            'eventos'=> $eventos
+        ];
+
+        $pdf = PDF::loadView('evento.report',$data);
+        //$pdf->setPaper('a4', 'landscape');
+       // dd($pdf);
+
+        return $pdf->download("listagem_eventos.pdf");
+}
 
 }
