@@ -44,7 +44,7 @@
 
                         <div class="mb-3">
                             <label for="lote_id" class="form-label">Lote:</label>
-                            <select name="lote_id" class="form-select">
+                            <select name="lote_id" class="form-control" >
                                 @foreach ($lotesIngresso as $item)
                                     <option value="{{ $item->id }}">{{ $item->descricao}}</option>
                                 @endforeach

@@ -10,33 +10,33 @@
 <body>
     <div class="container mt-2">
         <h2 class="text-center mb-2">{{$title}}</h2>
-        <table class="table table-bordered mb-5">
+        <table class="table">
             <thead>
                 <tr class="table-success">
                 <th scope="col">#</th>
-                <th>Baner:</th>
-                <th>Nome:</th>
-                <th>Empresa:</th>
-                <th>Data:</th>
-                <th>Numero de ingressos:</th>
-                <th>Endereço:</th>
+                <th scope="col">Baner:</th>
+                <th scope="col">Nome:</th>
+                <th scope="col">Empresa:</th>
+                <th scope="col">Data:</th>
+                <th scope="col">Numero de ingressos:</th>
+                <th scope="col">Endereço:</th>
                 </tr>
             </thead>
             <tbody>
             @foreach ($eventos as $item)
             @php
             $nome_imagem = !empty($item->baner) ? $item->baner : 'img/events/sem_imagem.png';
-
-            @endphp
+            $srcImagem = public_path()."/storage/".$nome_imagem;
+         @endphp
                 <tr>
                     <th scope="row">{{ $item->id }}</th>
-                    <td class="py-2 px-4 border"><img src="/storage/{{$nome_imagem}}" width="100px"
-                        alt="logo"></td>
-                    <td>{{ $item->nome }}</td>
-                    <td>{{ $item->empresa->nome }}</td>
-                    <td>{{ $item->data }}</td>
-                    <td>{{ $item->numero_de_ingressos }}</td>
-                    <td>{{ $item->endereco }}</td>
+                    <td scope="col"><img src="{{$srcImagem}}" width="100px"
+                        alt="imagem"></td>
+                    <td scope="col">{{ $item->nome }}</td>
+                    <td scope="col">{{ $item->empresa->nome }}</td>
+                    <td scope="col">{{ $item->data }}</td>
+                    <td scope="col">{{ $item->numero_de_ingressos }}</td>
+                    <td scope="col">{{ $item->endereco }}</td>
 
                 </tr>
                 @endforeach

@@ -1,12 +1,12 @@
 <!-- resources/views/loteIngresso/list.blade.php -->
 
 @extends('base.app')
-@section('titulo', 'Lotes de Lotes de Ingresso')
+@section('titulo', 'Lotes de lotes de ingresso')
 @section('content')
 
 <div class="container mt-3">
     <div class="d-flex justify-content-between align-items-center">
-        <h2>Listagem de Lotes de Ingresso</h2>
+        <h2>Listagem de lotes de Ingresso</h2>
         <form action="{{ route('loteIngresso.search') }}" method="post" class="d-flex">
             @csrf
             <div class="input-group">
@@ -19,7 +19,7 @@
                 <input type="text" name="valor" class="form-control" placeholder="Pesquisar">
             </div>
             <div class="input-group">
-                <button type="submit" class="btn btn-primary">Buscar</button>
+                <button type="submit" class="btn btn-primary" style="margin-left:5px ">Buscar</button>
             </div>
         </form>
 
@@ -47,8 +47,8 @@
                     <td class="py-2 px-4 border">{{ $loteIngresso->descricao }}</td>
                     <td class="py-2 px-4 border">{{ $loteIngresso->evento->nome }}</td>
                     <td class="py-2 px-4 border">
-                        <a type="button" class="btn btn-primary" href="{{ route('loteIngresso.edit', $loteIngresso->id) }}">Editar</a>
-                        <a type="button" class="btn btn-danger" href="{{ route('loteIngresso.destroy', $loteIngresso->id) }}" onclick="return confirm('Deseja Excluir?')">Excluir</a>
+                        <a type="button" class="btn btn-primary" href="{{ route('loteIngresso.edit', $loteIngresso->id) }}"><i class="bi bi-pencil-square"></i></a>
+                        <a type="button" class="btn btn-danger" href="{{ route('loteIngresso.destroy', $loteIngresso->id) }}" onclick="return confirm('Deseja Excluir?')"><i class="bi bi-trash3-fill"></i></a>
                     </td>
                 </tr>
             @endforeach

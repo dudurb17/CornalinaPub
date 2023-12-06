@@ -2,7 +2,7 @@
 
 @extends('base.app')
 
-@section('titulo', 'Formulário de Lote de Ingresso')
+@section('titulo', 'Formulário de lote de ingresso')
 
 @section('content')
     @php
@@ -21,6 +21,17 @@
 
                     <form action="{{ $route }}" method="post">
                         @csrf
+                        @if ($errors->any())
+                        <div class="mb-4 rounded-lg bg-danger-100 px-6 py-5 text-base text-danger-700" role="alert">Erro!
+                            @if ($errors->any())
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </div>
+                    @endif
 
                         <!-- Adicione os campos do formulário conforme necessário -->
 
@@ -31,7 +42,7 @@
 
                         <div class="mb-3">
                             <label for="evento_id" class="form-label">Evento:</label>
-                            <select name="evento_id" class="form-select">
+                            <select name="evento_id" class="form-control">
                                 @foreach ($eventos as $evento)
                                     <option value="{{ $evento->id }}">{{ $evento->nome }}</option>
                                 @endforeach

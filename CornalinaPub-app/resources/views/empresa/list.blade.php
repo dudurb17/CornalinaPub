@@ -17,12 +17,12 @@
                 <input type="text" name="valor" class="form-control" placeholder="Pesquisar">
             </div>
             <div class="input-group">
-                <button type="submit" class="btn btn-primary">Buscar</button>
+                <button type="submit" class="btn btn-primary" style="margin-left:5px">Buscar</button>
             </div>
         </form>
         <!-- Botão para abrir o modal de cadastro -->
         <button type="button" class="btn btn-success">
-            <a href="{{ route('empresas.create') }}" class="text-white text-decoration-none">Cadastrar nova Empresa</a>
+            <a href="{{ route('empresas.create') }}" class="text-white text-decoration-none">Cadastrar nova empresa</a>
         </button>
     </div><br>
 
@@ -53,12 +53,12 @@
                 <td class="py-2 px-4 border">{{ $empresa->endereco }}</td>
                 <td class="py-2 px-4 border">
                     <a href="{{ route('empresas.edit', $empresa->id) }}" class="editar-empresa btn btn-primary">
-                        Editar
+                    <i class="bi bi-pencil-square"></i>
                     </a>
                 </td>
-                <td><a  href="{{ route('eventoEmpresa.list', $empresa->id) }}"> Ver eventos</a></td>
+                <td><a class="editar-empresa btn btn-primary"  href="{{ route('eventoEmpresa.list', $empresa->id) }}"><i class="bi bi-eye"></i></a></td>
                 <td class="py-2 px-4 border">
-                    <a type="button" class="btn btn-danger" href="{{ route('empresas.destroy', $empresa->id) }}" onclick="return confirm('Deseja Excluir?')">Excluir</a>
+                    <a type="button" class="btn btn-danger" href="{{ route('empresas.destroy', $empresa->id) }}" onclick="return confirm('Deseja Excluir?')"><i class="bi bi-trash3-fill"></i></a>
                 </td>
             </tr>
             @endforeach

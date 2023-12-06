@@ -26,7 +26,7 @@ class EmpresaController extends Controller
     public function store(Request $request)
         {
          $request->validate([
-                'nome' => 'required',
+            'nome' => 'required',
             'cnpj' => 'required|unique:empresas',
             'endereco' => 'required',
         ]);

@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="bg-white p-4 rounded shadow">
-                    <h3 class="text-2xl font-medium mb-4">Formulário de Eventos</h3>
+                    <h3 class="text-2xl font-medium mb-4">Formulário de eventos</h3>
 
                     <form action="{{ $route }}" method="post" enctype="multipart/form-data">
                         @csrf

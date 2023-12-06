@@ -27,6 +27,10 @@ class EventoController extends Controller
             'endereco' => 'required',
             'numero_de_ingressos'=>"required",
 
+        ],[
+            'nome.required'=>"O :attribute é obrigatorio!",
+            'endereco.required'=>"O :attribute é obrigatorio!",
+            'numero_de_ingressos.required'=>"O :attribute é obrigatorio!",
         ]);
         $dados=['nome'=>$request->nome,
         'empresa_id'=>$request->empresa_id,
@@ -125,7 +129,7 @@ class EventoController extends Controller
 
     public function report(){
         //select * from evento order by nome
-        $eventos = Evento::orderBy('nome')->get();
+        $eventos = Evento::orderBy('id')->get();
 
         $data = [
             'title'=>"Relatório listagem de eventos",
@@ -133,7 +137,7 @@ class EventoController extends Controller
         ];
 
         $pdf = PDF::loadView('evento.report',$data);
-        //$pdf->setPaper('a4', 'landscape');
+        $pdf->setPaper('a4', 'landscape');
        // dd($pdf);
 
         return $pdf->download("listagem_eventos.pdf");

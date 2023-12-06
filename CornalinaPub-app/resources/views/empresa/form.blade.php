@@ -10,12 +10,25 @@
             $route = route('empresas.store');
         }
     @endphp
-    <div class="mx-auto py-12 divide-y md:max-w-4xl">
-        <div class="grid grid-cols 2 gap-4">
-            <h3 class="pt-4 text-2xl font-medium">Formulário de Eventos</h3>
+    <div class="container py-5">
+        <div class="row">
+        <div class="col-md-6">
+            <div class="bg-white p-4 rounded shadow">
+            <h3 class="pt-4 text-2xl font-medium">Formulário de empresas</h3>
            <!-- Adicione aqui o formulário de cadastro -->
            <form action="{{$route}}" method="post" enctype="multipart/form-data">
             @csrf <!-- cria um hash de segurança-->
+            @if ($errors->any())
+            <div class="mb-4 rounded-lg bg-danger-100 px-6 py-5 text-base text-danger-700" role="alert">Erro!
+                @if ($errors->any())
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+            </div>
+        @endif
             <div class="form-group">
                 <label for="nome">Nome:</label>
                 <input type="text" name="nome" value="@if (!empty($empresa->nome)) {{ $empresa->nome }}@elseif(!empty(old('nome'))){{ old('nome') }}@else{{ '' }} @endif" class="form-control" required>
@@ -32,12 +45,15 @@
             $nome_imagem = !empty($empresa->logo) ? $empresa->logo : 'img/events/sem_imagem.png';
             @endphp
             <div>
-                <img class="h-40 w-40 object-cover rounded-full" src="/storage/{{ $nome_imagem }}" width="300px" alt="logo">
-                <br>
-                <input class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100" type="file" name="logo" id="logo"><br>
+                <input class="form-control" type="file" name="logo" id="logo"><br>
             </div>
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>
+    </div>
+   </div>
+   <div class="col-md-6 text-center">
+    <img class="img-fluid rounded-circle" src="/storage/{{ $nome_imagem }}" width="300px" alt="logo">
+   </div>
     </div>
     </div>
 @endsection

@@ -11,7 +11,7 @@
     <form action="{{ route('evento.search') }}" method="post" class="d-flex">
         @csrf
         <div class="input-group" >
-            <select name="tipo" class="form-select">
+            <select name="tipo" class="form-select btn">
                 <option value="nome">Nome</option>
                 <option value="numero_de_ingressos"> Número de ingressos</option>
             </select>
@@ -70,11 +70,11 @@
                     <td class="py-2 px-4 border">{{ $item->endereco }}</td>
                     <td class="py-2 px-4 border">
                         <a type="button" class="btn btn-primary"
-                        href="{{ route('evento.edit', $item->id) }}">Editar</a>
+                        href="{{ route('evento.edit', $item->id) }}"><i class="bi bi-pencil-square"></i></a>
                     </td>
-<td class="py-2 px-4 border">
+                     <td class="py-2 px-4 border">
                     <a type="button" class="btn btn-danger" href="{{ route('evento.destroy', $item->id) }}"
-                            onclick="return confirm('Deseja Excluir?')">Excluir</a></td>
+                            onclick="return confirm('Deseja Excluir?')"><i class="bi bi-trash3-fill"></i></a></td>
                 </tr>
             @endforeach
         </tbody>

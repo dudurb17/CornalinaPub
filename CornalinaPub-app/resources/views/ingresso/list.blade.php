@@ -8,7 +8,7 @@
         <form action="{{ route('ingresso.search') }}" method="post" class="d-flex">
             @csrf
             <div class="input-group">
-                <select name="tipo" class="form-select">
+                <select name="tipo" class="form-select btn">
                     <option value="codigo">Código</option>
                     <option value="valor">Valor</option>
                     <!-- Adicione outros campos de pesquisa, se necessário -->
@@ -40,6 +40,7 @@
                 <!-- Adicione outros cabeçalhos, se necessário -->
                 <th>Ações</th>
                 <th>Ações</th>
+
             </tr>
         </thead>
         <tbody>
@@ -52,12 +53,12 @@
                 <!-- Adicione outros campos, se necessário -->
                 <td class="py-2 px-4 border">
                     <a type="button" class="btn btn-primary"
-                        href="{{ route('ingresso.edit', $ingresso->id) }}">Editar</a>
+                        href="{{ route('ingresso.edit', $ingresso->id) }}"><i class="bi bi-pencil-square"></i></a>
                 </td>
                 <td class="py-2 px-4 border">
                     <a type="button" class="btn btn-danger"
                         href="{{ route('ingresso.destroy', $ingresso->id) }}"
-                        onclick="return confirm('Deseja Excluir?')">Excluir</a>
+                        onclick="return confirm('Deseja Excluir?')"><i class="bi bi-trash3-fill"></i></a>
                 </td>
             </tr>
             @endforeach
